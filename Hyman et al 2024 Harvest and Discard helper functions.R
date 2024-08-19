@@ -92,15 +92,17 @@ Season_Month_Fraction <- function(
     Date_vector_1 <- data.frame(Date = seq.Date(Dates_1[1], Dates_1[2], by = 'day'))
     Dates_2 <- as.Date(paste(Additional, Year), format = "%B %d %Y")
     Date_vector_2 <- data.frame(Date = seq.Date(Dates_2[1], Dates_2[2], by = 'day'))
-    ## Creates second season length variable
-    Season_length <- nrow(Date_vector_1, Date_vector_2)
     if(tolower(Additional_KOD) == "weekday"){
       Date_vector_2 <- as.data.frame(Date_vector_2[which(paste(wday(Date_vector_2$Date, abbr = T, label = T)) %nin% c("Fri", "Sat", "Sun")),])
       colnames(Date_vector_2) <- "Date"
+      ## Creates second season length variable
+      Season_length <- sum(c(nrow(Date_vector_1), nrow(Date_vector_2)))
     }
     if(tolower(Additional_KOD) == "weekend"){
       Date_vector_2 <- as.data.frame(Date_vector_2[which(paste(wday(Date_vector_2$Date, abbr = T, label = T)) %in% c("Fri", "Sat", "Sun")),])
       colnames(Date_vector_2) <- "Date"
+      ## Creates second season length variable
+      Season_length <- sum(c(nrow(Date_vector_1), nrow(Date_vector_2)))
     }
     Date_vector <- rbind(Date_vector_1, Date_vector_2)
   }
@@ -111,8 +113,7 @@ Season_Month_Fraction <- function(
     mutate(Date2 = as.Date(paste(year(Date), month(Date), day, sep = "-")))
   Fraction_Open <- All_Dates_Year%>%group_by(Date2)%>%summarize(Open = mean(Open))
   return(list(Fraction_Open, Season_length))                                    ## First item returns vector of fractions of each month open
-}                                                                               ## Second item returns season length
-
+}        
 #------------------------------------------------------------------------------#
 ### Function to generate tables for harvest and discard parameters
 Hyman_tables <- function(Model, Type = "Discard"){
