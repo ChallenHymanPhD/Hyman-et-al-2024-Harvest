@@ -127,7 +127,7 @@ Hyman_tables <- function(Model, Type = "Discard"){
   
   ## Names of each term in correct order
   ### Mean
-  Mean_names <- c("PH", "PN",
+  Mean_names <- c("$PH$", "$PN$",
                   paste0("PH:Index"), paste0("PN:Index"),
                   paste0("PH:Juvenile"), paste0("PN:Juvenile"),
                   paste0("PH:Open_{Gag}"), paste0("PN:Open_{Gag}"),
@@ -228,6 +228,9 @@ Hyman_tables <- function(Model, Type = "Discard"){
   ## Bind to single data frame
   Supplemental_table <- rbind(Mean_supp, Hurdle_supp, Shape_supp)
   rownames(Supplemental_table) <- NULL
+
+  ## Add latex math format
+  Supplemental_table[,2] <- paste0("$",Supplemental_table[,2], "$")
   
   ## Add 'significance' notation
   Signif <- ifelse(sign(as.numeric(Supplemental_table[,4])) == sign(as.numeric(Supplemental_table[,6])), "*", "")
