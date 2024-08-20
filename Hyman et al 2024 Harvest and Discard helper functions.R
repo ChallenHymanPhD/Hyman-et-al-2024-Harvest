@@ -113,7 +113,8 @@ Season_Month_Fraction <- function(
     mutate(Date2 = as.Date(paste(year(Date), month(Date), day, sep = "-")))
   Fraction_Open <- All_Dates_Year%>%group_by(Date2)%>%summarize(Open = mean(Open))
   return(list(Fraction_Open, Season_length))                                    ## First item returns vector of fractions of each month open
-}        
+}                                                                               ## Second item returns season length
+
 #------------------------------------------------------------------------------#
 ### Function to generate tables for harvest and discard parameters
 Hyman_tables <- function(Model, Type = "Discard"){
@@ -305,11 +306,11 @@ Hyman_tables <- function(Model, Type = "Discard"){
   
   ## Generate parameter names based on model
   if(Type == "Discard"){
-    PH_names <- paste0("$\\theta_{", gsub("\\$", "", Hurdle_names[PH]), "}$", Signif_PH)
-    PN_names <- paste0("$\\theta_{", gsub("\\$", "", Hurdle_names[PN]), "}$", Signif_PN)
+    PH_names <- paste0("$\\zeta_{", gsub("\\$", "", Hurdle_names[PH]), "}$", Signif_PH)
+    PN_names <- paste0("$\\zeta_{", gsub("\\$", "", Hurdle_names[PN]), "}$", Signif_PN)
   } else {
-    PH_names <- paste0("$\\delta_{", gsub("\\$", "", Hurdle_names[PH]), "}$", Signif_PH)
-    PN_names <- paste0("$\\delta_{", gsub("\\$", "", Hurdle_names[PN]), "}$", Signif_PN)
+    PH_names <- paste0("$\\gamma_{", gsub("\\$", "", Hurdle_names[PH]), "}$", Signif_PH)
+    PN_names <- paste0("$\\gamma_{", gsub("\\$", "", Hurdle_names[PN]), "}$", Signif_PN)
   }
   
   ## Append columns to generate mean table
@@ -345,11 +346,11 @@ Hyman_tables <- function(Model, Type = "Discard"){
   
   ## Generate parameter names based on model
   if(Type == "Discard"){
-    PH_names <- paste0("$\\tau_{", gsub("\\$", "", Shape_names[PH]), "}$", Signif_PH)
-    PN_names <- paste0("$\\tau_{", gsub("\\$", "", Shape_names[PN]), "}$", Signif_PN)
+    PH_names <- paste0("$\\xi_{", gsub("\\$", "", Shape_names[PH]), "}$", Signif_PH)
+    PN_names <- paste0("$\\xi_{", gsub("\\$", "", Shape_names[PN]), "}$", Signif_PN)
   } else {
-    PH_names <- paste0("$\\phi_{", gsub("\\$", "", Shape_names[PH]), "}$", Signif_PH)
-    PN_names <- paste0("$\\phi_{", gsub("\\$", "", Shape_names[PN]), "}$", Signif_PN)
+    PH_names <- paste0("$\\nu_{", gsub("\\$", "", Shape_names[PH]), "}$", Signif_PH)
+    PN_names <- paste0("$\\nu_{", gsub("\\$", "", Shape_names[PN]), "}$", Signif_PN)
   }
   
   ## Append columns to generate mean table
