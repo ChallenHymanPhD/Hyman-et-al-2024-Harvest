@@ -127,7 +127,7 @@ Hyman_tables <- function(Model, Type = "Discard"){
   
   ## Names of each term in correct order
   ### Mean
-  Mean_names <- c("$PH$", "$PN$",
+  Mean_names <- c("PH", "PN",
                   paste0("PH:Index"), paste0("PN:Index"),
                   paste0("PH:Juvenile"), paste0("PN:Juvenile"),
                   paste0("PH:Open_{Gag}"), paste0("PN:Open_{Gag}"),
@@ -146,22 +146,18 @@ Hyman_tables <- function(Model, Type = "Discard"){
   ## Hurdle structure changes depending on harvest or discard model
   if(Type == "Discard"){
     Hurdle_names <- c("PH", "PN",
+                      "PH:F", "PN:F",
                       paste0("PH:Index"), paste0("PN:Index"))
   } else {
     Hurdle_names <- c("PH", "PN",
-                      paste0("PH:Season_{Gag}"), paste0("PN:Season_{Gag}"))
+                      paste0("PH:OpenB_{Gag}"), paste0("PN:OpenB_{Gag}"),
+                      "PH:F", "PN:F",
+                      paste0("PH:Index"), paste0("PN:Index"))
   }
   
   ### Shape
   Shape_names <-c("PH", "PN",
-                  "PH:sin_{12}",
-                  "PN:sin_{12}", 
-                  "PH:cos_{12}",
-                  "PN:cos_{12}",
-                  "PH:sin_{6}", 
-                  "PN:sin_{6}", 
-                  "PH:cos_{6}",
-                  "PN:cos_{6}",
+                  "PH:F", "PN:F",
                   paste0("PH:Index"), paste0("PN:Index"))
   
   #-------------------- Supplemental table --------------------#
@@ -186,19 +182,17 @@ Hyman_tables <- function(Model, Type = "Discard"){
   ##Hurdle
   Hurdle_supp <- Hyman_supplemental_tables[,Hurdle_terms]
   Hurdle_supp <-Hurdle_supp[,c(
-    1,2,                                                                       
+    1,2,          
+    grep("M", colnames(Hurdle_supp)),
+    grep("Trips", colnames(Shape_supp)),
     grep("Index", colnames(Hurdle_supp)),
-    grep("M", colnames(Hurdle_supp))                                                              
   )]%>%t()%>%round(.,3)
   
   ##Shape
   Shape_supp <- Hyman_supplemental_tables[,Shape_terms]
   Shape_supp <-Shape_supp[,c(
     1,2,
-    grep("sin1", colnames(Shape_supp)),
-    grep("cos1", colnames(Shape_supp)),
-    grep("sin2", colnames(Shape_supp)),
-    grep("cos2", colnames(Shape_supp)),
+    grep("Trips", colnames(Shape_supp)),
     grep("Index", colnames(Shape_supp))                                                           
   )]%>%t()%>%round(.,3)
   
@@ -228,7 +222,7 @@ Hyman_tables <- function(Model, Type = "Discard"){
   ## Bind to single data frame
   Supplemental_table <- rbind(Mean_supp, Hurdle_supp, Shape_supp)
   rownames(Supplemental_table) <- NULL
-
+  
   ## Add latex math format
   Supplemental_table[,2] <- paste0("$",Supplemental_table[,2], "$")
   
@@ -286,8 +280,9 @@ Hyman_tables <- function(Model, Type = "Discard"){
   Hurdle_main <- Hyman_preds[,Hurdle_terms]
   Hurdle_main <-Hurdle_main[,c(
     1,2,                                                                       
-    grep("Index", colnames(Hurdle_main)),
-    grep("M", colnames(Hurdle_main))                                                               
+    grep("M", colnames(Hurdle_supp)),
+    grep("Trips", colnames(Shape_supp)),
+    grep("Index", colnames(Hurdle_supp)),                                                            
   )]
   
   ## Marginal effects for Peninsula
@@ -323,11 +318,8 @@ Hyman_tables <- function(Model, Type = "Discard"){
   Shape_main <- Hyman_preds[,Shape_terms]
   Shape_main <-Shape_main[,c(
     1,2,
-    grep("sin1", colnames(Shape_main)),
-    grep("cos1", colnames(Shape_main)),
-    grep("sin2", colnames(Shape_main)),
-    grep("cos2", colnames(Shape_main)),
-    grep("Index", colnames(Shape_main))                                                               
+    grep("Trips", colnames(Shape_supp)),
+    grep("Index", colnames(Shape_supp))                                                                      
   )]
   
   ## Marginal effects for Peninsula
