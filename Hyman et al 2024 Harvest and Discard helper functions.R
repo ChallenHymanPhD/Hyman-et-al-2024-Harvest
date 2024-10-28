@@ -184,7 +184,7 @@ Hyman_tables <- function(Model, Type = "Discard"){
   Hurdle_supp <-Hurdle_supp[,c(
     1,2,          
     grep("M", colnames(Hurdle_supp)),
-    grep("Trips", colnames(Shape_supp)),
+    grep("Trips", colnames(Hurdle_supp)),
     grep("Index", colnames(Hurdle_supp)),
   )]%>%t()%>%round(.,3)
   
@@ -281,7 +281,7 @@ Hyman_tables <- function(Model, Type = "Discard"){
   Hurdle_main <-Hurdle_main[,c(
     1,2,                                                                       
     grep("M", colnames(Hurdle_supp)),
-    grep("Trips", colnames(Shape_supp)),
+    grep("Trips", colnames(Hurdle_supp)),
     grep("Index", colnames(Hurdle_supp)),                                                            
   )]
   
