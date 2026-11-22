@@ -465,7 +465,7 @@ for (Season_Start in Gag_Start){                                                
                                  Region*M_Gag +
                                  Region*M_RS + 
                                  Region*log(Trips), data = Test_iter)
-      gamma_MM <- model.matrix(~Region*M_Gag, data = Test_iter)                 ## Design matrix for hurdle component of gag HPUE based on fixed values, and set management conditions
+      gamma_MM <- model.matrix(~Region*ceiling(M_Gag), data = Test_iter)         ## Design matrix for hurdle component of gag HPUE based on fixed values, and set management conditions
       nu_MM <- model.matrix(~Region*sin1 + 
                               Region*cos1 + 
                               Region*sin2 + 
