@@ -254,7 +254,7 @@ $$
 \begin{aligned}
 E[\hat{H}^{(s)}_{n,o}] &= (1-\delta^{(s)}_{n,o})(\lambda^{(s)}_{n,o})\nonumber\\
 &\lambda^{(s)}_{n,o} = exp\bigg(\omega^{(s)}_0 +\sum_{u=1}^U\hat{e}^{(s)}_{n,o,u}\omega^{(s)}_{i}\bigg)\nonumber\\
-& \delta^{(s)}_{n,o} = \frac{exp(\gamma^{(s)}_0+\sum_{l=1}^L{b_{n,o,l}\gamma^{(s)}_{a}})}{1+exp(\gamma^{(s)}_0+\sum_{l=1}^L{b_{no,l}\gamma^{(s)}_{a}})}\nonumber\\
+& \delta^{(s)}_{n,o} = \frac{exp(\gamma^{(s)}_0+\sum_{l=1}^L{b_{n,o,l}\gamma^{(s)}_{l}})}{1+exp(\gamma^{(s)}_0+\sum_{l=1}^L{b_{n,o,l}\gamma^{(s)}_{a}})}\nonumber\\
 \nonumber\\
 E[\hat{D}^{(s)}_{n,o}] &= (1-\theta^{(s)}_{n,o})(\eta^{(s)}_{n,o})\nonumber\\
 & \eta^{(s)}_{n,o} = exp\bigg(\psi^{(s)}_0 +\sum_{l=1}^L\hat{k}^{(s)}_{n,o,i}\psi^{(s)}_{i}\bigg)\nonumber\\
