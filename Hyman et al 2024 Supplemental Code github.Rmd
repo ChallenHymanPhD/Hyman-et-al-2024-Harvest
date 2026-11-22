@@ -73,8 +73,9 @@ suppressMessages(library(readxl))
 ## Clear out old files in R
 rm(list=ls(all=TRUE)) 
 
-## Set working directory (set to wherever you store the files)
-setwd("C:\\Users\\ichal\\Documents\\Hyman gag grouper models\\Hyman et al 2024b")
+## Set working directory to a local folder (optional). All inputs are read
+## from GitHub; this folder only receives Effort_Model.rds and figure files.
+# setwd("path/to/your/folder")
 
 ## Add helper functions from source file on Github
 source("https://raw.githubusercontent.com/ChallenHymanPhD/Hyman-et-al-2024-Harvest/R-Files/Hyman%20et%20al%202024%20Harvest%20and%20Discard%20helper%20functions.R")
