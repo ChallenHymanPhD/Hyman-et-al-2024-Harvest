@@ -147,7 +147,7 @@ $$
 &\pi_{t} = \frac{\phi_{t}}{\lambda_{t}}\nonumber\\
 &\lambda_{t} = exp\bigg(\omega_0 + \sum_{u=1}^U{e_{t,u}\omega_{u}}\bigg)\\
 &\phi_{t} = exp\bigg(\nu_0 + \sum_{j=1}^J{w_{t,j}\nu_{j}}\bigg)\\
-&\delta_{t} = \frac{1}{1+exp(\gamma_0 +\sum_{l=1}^L{b_{t,l}\gamma_{l}})}
+&\delta_{t} = \frac{\exp\big(\gamma_0 +\sum_{l=1}^L{b_{t,l}\gamma_{l}}\big)}{1+\exp\big(\gamma_0 +\sum_{l=1}^L{b_{t,l}\gamma_{l}}\big)}
 \end{aligned}
 $$
 where $\text{H}_{t}$ denotes the gag harvest in the $t^{th}$ month-year-region. Meanwhile, $\lambda_{t}$ and $\phi_t$ denote the mean and shape of the Gamma distribution conditioned on $\text{H}_{t} > 0$ (i.e., at least on gag harvested), respectively, and $\delta_{t}$ denotes the binomial probability of observing 0 gag harvest in region-month-year $t$. Here, $\lambda_{t}$ was related to a set of $U$ predictors ($e_{t,1}, \dots, e_{t,U}$) using a log link function and set of regression coefficients $\omega_{1}, \dots, \omega_{U}$. Predictors considered in modeling $\lambda_{t}$ included region, the fraction of a month open to gag harvest, the fraction of a month open to red snapper harvest, recreational and juvenile indices of abundance, angler-trips, sea-surface temperature, and harmonic terms. The shape parameter $\phi_{t}$ was related to a set of $J$ predictors ($w_{t,1}, \dots, w_{t,J}$) also using a log link function and regression coefficients $\nu_{1}, \dots, \nu_{J}$. We considered region and harmonic terms as predictors to model $\phi_t$. Finally, $\delta_t$ was related to a set of $L$ predictors ($b_{t,1}, \dots, b_{t,J}$) and coefficients $\gamma_0, ... \gamma_L$ through a logit link. We modeled $\delta_t$ as a function of region and whether the gag season was open (at least one day open) or closed (no days open) in a given month.
@@ -200,7 +200,7 @@ $$
 & \iota_{t} = \frac{\tau_{t}}{\eta_{t}}\nonumber\\
 & \eta_{t} = exp\bigg(\psi_0 +\sum_{i=1}^Ik_{t,i}\psi_{i}\bigg)\nonumber\\
 & \tau_{t} =  exp\bigg(\zeta_0 +\sum_{s=1}^S{z_{t,s}}\zeta_{s}\bigg)\nonumber\\
-& \theta_{t} = \frac{1}{1+exp(\xi_0 +\sum_{a=1}^A{g_{t,a}\xi_{a}})}\nonumber
+& \theta_{t} = \frac{\exp\big(\xi_0 +\sum_{a=1}^A{g_{t,a}\xi_{a}}\big)}{1+\exp\big(\xi_0 +\sum_{a=1}^A{g_{t,a}\xi_{a}}\big)}\nonumber
 \end{aligned}
 $$
 
