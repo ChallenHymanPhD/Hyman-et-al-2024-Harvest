@@ -337,8 +337,8 @@ ggplot(Train)+
 Year <- 2024
 Gag_Start <- c("No Season", "June 01", "September 01", "November 01")           ## Gag season start dates for counterfactual scenarios (including baseline)
 ACT <-  333000*0.9*2.12                                                         ## ACL converted from SRFS units to MRIP-FES units with 10% buffer for ACT
-RS_Season <- c("June 01", "July 31")                                            ## 2024 Florida Red Snapper season (https://myfwc.com/fishing/saltwater/recreational/snappers/#:~:text=Gulf%20Recreational%20Red%20Snapper,30.)
-RS_Season2 <- c("September 01", "November 30")                                  ## Dates red snapper was reopened in Florida
+RS_Season <- c("June 16", "July 31")                                            ## 2024 Florida Red Snapper season (https://myfwc.com/fishing/saltwater/recreational/snappers/#:~:text=Gulf%20Recreational%20Red%20Snapper,30.)
+RS_Season2 <- c("September 01", "November 1")                                   ## Dates red snapper was reopened in Florida
 RG_Season <- c("Jan 01", "June 30")                                             ## 2024 red grouper season (https://myfwc.com/news/all-news/red-grouper-524/)
 RG_Season2 <- NULL                                                              ## Red grouper season did not re-open
 N <- 1000                                                                       ## Number of iterations to run simulation
